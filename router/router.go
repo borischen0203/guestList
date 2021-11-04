@@ -34,15 +34,14 @@ func SetupRouter() *gin.Engine {
 	// router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	router.GET("/health", handlers.HealthHandler)
 	router.GET("/version", handlers.VersionHandler)
-	router.GET("/getTest", handlers.GuestHandler)
 
 	router.POST("/guest_list/:name", handlers.AddGuest)
 
 	router.GET("/guest_list")
 	router.GET("/guests")
-	router.GET("/seats_empty")
+	router.GET("/seats_empty", handlers.GetEmptySeats)
 
-	router.PUT("/guests/:name")
+	router.PUT("/guests/:name", handlers.UpdateAccomGuest)
 
 	router.DELETE("/guests/:name", handlers.DeleteGuest)
 

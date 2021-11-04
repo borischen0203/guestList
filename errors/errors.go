@@ -37,15 +37,15 @@ var InvalidTableNumberError = ErrorInfo{
 }
 
 // Invalid alias error means the alias is not letter,number or length more than 30 lengths
-var InsufficientSpaceError = ErrorInfo{
+var InvalidNameError = ErrorInfo{
 	Code: 40003,
-	Msg:  "Insufficient space",
+	Msg:  "Invalid guest name",
 }
 
 // Alias forbiden error means the alias is used
-var AliasForbidenError = ErrorInfo{
+var InsufficientSpaceError = ErrorInfo{
 	Code: 40301,
-	Msg:  "Alias is used",
+	Msg:  "Insufficient space",
 }
 
 //Url not found error means the long url is not found in db

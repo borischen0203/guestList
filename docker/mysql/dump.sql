@@ -21,4 +21,5 @@ insert into guest_table(table_number, space) values(3, 10);
 insert into guest_table(table_number, space) values(4, 10);
 
 insert into guest_info(table_number, name,accompanying_guests) values(1, "boris", 2);
+insert into guest_info(table_number, name,accompanying_guests) values(1, "nina", 3);
 

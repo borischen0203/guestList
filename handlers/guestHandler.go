@@ -1,10 +1,8 @@
 package handlers
 
 import (
-	"fmt"
 	"net/http"
 
-	db "github.com/getground/tech-tasks/backend/database"
 	"github.com/getground/tech-tasks/backend/dto"
 	"github.com/getground/tech-tasks/backend/errors"
 	"github.com/getground/tech-tasks/backend/logger"
@@ -12,45 +10,25 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func GuestHandler(c *gin.Context) {
-	db := db.DbConn()
-
-	_, err := db.Exec("insert INTO guest_table(table_number, space) values(?,?)", 3, 10)
-	if err != nil {
-		fmt.Printf("Insert data failed,err:%v", err)
-		return
-	}
-	// db.InsertData()
-	// db := database.DbConn()
-	// insDB, err := db.Prepare("INSERT INTO guest_table(table_number, space) VALUES(?,?)")
-	// if err != nil {
-	// 	fmt.Printf("Insert data failed,err:%v", err)
-	// 	return
-	// }
-	// insDB.Exec(2, 10)
-	// defer db.Close()
-}
-
 func AddGuest(c *gin.Context) {
 	request := dto.AddGuestRequest{}
-	// response := dto.GuestResponse{}
+	response := dto.GuestResponse{}
 	request.Name = c.Param("name")
 	c.BindJSON(&request)
-	// fmt.Println(request.Name)
-	// fmt.Println(request.)
 	logger.Info.Printf("[AddGuest Handler] request=%+v\n", request)
-	c.IndentedJSON(http.StatusCreated, request)
-	// statusCode, result, err := services.AddGuestService(request, response)
-	// switch statusCode {
-	// case 200:
-	// 	c.JSON(http.StatusOK, result)
-	// case 400:
-	// 	c.JSON(http.StatusBadRequest, err)
-	// case 500:
-	// 	c.JSON(http.StatusInternalServerError, err)
-	// default:
-	// 	c.JSON(http.StatusInternalServerError, errors.InternalServerError)
-	// }
+	statusCode, result, err := services.AddGuestService(request, response)
+	switch statusCode {
+	case 200:
+		c.JSON(http.StatusOK, result)
+	case 400:
+		c.JSON(http.StatusBadRequest, err)
+	case 403:
+		c.JSON(http.StatusForbidden, err)
+	case 500:
+		c.JSON(http.StatusInternalServerError, err)
+	default:
+		c.JSON(http.StatusInternalServerError, errors.InternalServerError)
+	}
 
 }
 
@@ -64,6 +42,40 @@ func DeleteGuest(c *gin.Context) {
 		c.JSON(http.StatusNoContent, nil)
 	case 400:
 		c.JSON(http.StatusBadRequest, err)
+	case 500:
+		c.JSON(http.StatusInternalServerError, err)
+	default:
+		c.JSON(http.StatusInternalServerError, errors.InternalServerError)
+	}
+}
+
+func UpdateAccomGuest(c *gin.Context) {
+	request := dto.UpdateGuestRequest{}
+	response := dto.GuestResponse{}
+	request.Name = c.Param("name")
+	c.BindJSON(&request)
+	logger.Info.Printf("[UpdateAccomGuest Handler] request=%+v\n", request)
+	statusCode, result, err := services.UpdateGuestService(request, response)
+	switch statusCode {
+	case 200:
+		c.JSON(http.StatusOK, result)
+	case 400:
+		c.JSON(http.StatusBadRequest, err)
+	case 403:
+		c.JSON(http.StatusForbidden, err)
+	case 500:
+		c.JSON(http.StatusInternalServerError, err)
+	default:
+		c.JSON(http.StatusInternalServerError, errors.InternalServerError)
+	}
+
+}
+func GetEmptySeats(c *gin.Context) {
+	response := dto.EmptySeatsResponse{}
+	statusCode, result, err := services.GetEmptySeatsNumberService(response)
+	switch statusCode {
+	case 200:
+		c.JSON(http.StatusOK, result)
 	case 500:
 		c.JSON(http.StatusInternalServerError, err)
 	default:

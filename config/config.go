@@ -15,11 +15,6 @@ type envConfig struct {
 	DBHost     string `env:"DB_HOST"`
 	DBPort     string `env:"DB_PORT"`
 	DBName     string `env:"DB_NAME"`
-
-	// DBName  string `env:"DB_Name,required"`
-	// HOST string `env:"URL_HOST,required"`
-	// PORT string `env:"PORT,required"`
-	// UrlInfoCollectionName string `env:"Url_Info_Collection_Name,required"`
 }
 
 var (

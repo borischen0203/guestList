@@ -14,8 +14,17 @@ type DeleteGuestRequest struct {
 	Name string `param:"name" `
 }
 
+type UpdateGuestRequest struct {
+	Name                string `param:"name" `
+	Accompanying_guests int    `json:"accompanying_guests" binding:"required"`
+}
+
 type GuestResponse struct {
 	Name string `json:"name" binding:"required"`
+}
+
+type EmptySeatsResponse struct {
+	Seats_empty int `json:"seats_empty" binding:"required" `
 }
 
 func Validate(s string) (bool, e.ErrorInfo) {
