@@ -5,4 +5,7 @@ docker-up:
 .PHONY: docker-down
 docker-down: ## Stop docker containers and clear artefacts.
 	docker-compose -f docker-compose.yaml down
-	docker system prune 
+	docker system prune
+
+run:
+	go run cmd/app/main.go

@@ -10,6 +10,7 @@ import (
 	"github.com/getground/tech-tasks/backend/logger"
 	"github.com/getground/tech-tasks/backend/router"
 	_ "github.com/go-sql-driver/mysql"
+	_ "github.com/joho/godotenv/autoload"
 )
 
 func Setup() {

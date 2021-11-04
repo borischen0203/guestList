@@ -15,9 +15,10 @@ services:
     platform: linux/amd64
     image: mysql:5.7
     restart: unless-stopped
+    container_name: godockerDB
     environment:
       MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: database
+      MYSQL_DATABASE: getground
       MYSQL_USER: user
       MYSQL_PASSWORD: password
     ports:
