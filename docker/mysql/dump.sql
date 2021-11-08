@@ -1,5 +1,3 @@
--- Use getground;
-
 CREATE TABLE `guest_table` (
   `table_number` INT NOT NULL,
   `space` int,
@@ -19,7 +17,13 @@ insert into guest_table(table_number, space) values(1, 10);
 insert into guest_table(table_number, space) values(2, 10);
 insert into guest_table(table_number, space) values(3, 10);
 insert into guest_table(table_number, space) values(4, 10);
+insert into guest_table(table_number, space) values(5, 10);
+insert into guest_table(table_number, space) values(6, 10);
+insert into guest_table(table_number, space) values(7, 10);
+insert into guest_table(table_number, space) values(8, 10);
+insert into guest_table(table_number, space) values(9, 10);
+insert into guest_table(table_number, space) values(10, 10);
 
 insert into guest_info(table_number, name,accompanying_guests) values(1, "boris", 2);
-insert into guest_info(table_number, name,accompanying_guests) values(1, "nina", 3);
+
 
