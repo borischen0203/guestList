@@ -1,11 +1,5 @@
-<!-- ## Running the application
-We added basic project skeleton with docker-compose. (optional)
-Feel free to refactor but provide us with good instructions to start the application
-```
-make docker-up
-```
+<img src="https://raw.githubusercontent.com/scraly/gophers/main/friends.png" alt="friends" width=500>
 
-Update the `docker/mysql/dump.sql` to initialize the mysql database -->
 
 # Guest list-service
 This is a guest list service. You can add, delete, update, get guest info.
