@@ -54,3 +54,15 @@ curl -X GET http://localhost:3000/guests
 ```bash
 curl -X GET http://localhost:3000/seats_empty
 ```
+
+## Tech Stack
+- Golang
+- Gin framework
+- RESTful API
+- Swagger
+- Docker
+- MySQL
+- Makefile
+
+## Todo:
+- [ ]
